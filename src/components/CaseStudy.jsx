@@ -92,72 +92,108 @@ function Gallery({ images, onOpen, galleryOffset }) {
   function prev() { setCurrent((c) => (c - 1 + total) % total); }
   function next() { setCurrent((c) => (c + 1) % total); }
 
+  // Images are 300px wide at 3:2 ratio = 200px tall + ~40px figcaption = 240px total
+  const ITEM_H = 240;
+
   return (
-    <div className="relative overflow-hidden pb-1">
-      {/* Sliding strip */}
-      <div
-        className="flex gap-4 transition-transform duration-500 ease-out"
-        style={{ transform: `translateX(calc(-${current} * (300px + 16px)))` }}
-      >
-        {images.map(({ src, alt, caption, ariaLabel, isVideo, type }, localIdx) => (
-          <figure
-            key={src}
-            className="m-0 flex-none w-[300px] overflow-hidden border border-border-soft rounded-xl bg-card group"
+    <div className="pb-1">
+      {/*
+        Outer wrapper: fixed height = full figure height (image + caption).
+        This is the positioning context for the arrows.
+        NO overflow-hidden here — arrows live outside the clip zone.
+      */}
+      <div className="relative rounded-xl" style={{ height: ITEM_H }}>
+
+        {/* Strip clip: fills the parent completely, only this clips */}
+        <div className="absolute inset-0 overflow-hidden rounded-xl">
+          <div
+            className="flex gap-4 transition-transform duration-500 ease-out h-full"
+            style={{ transform: `translateX(calc(-${current} * (300px + 16px)))` }}
           >
-            {isVideo || type === 'video' ? (
-              <video
-                src={src}
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full object-cover"
-                style={{ aspectRatio: '3/2' }}
-              />
-            ) : (
-              <button
-                type="button"
-                aria-label={ariaLabel}
-                onClick={() => onOpen(galleryOffset + localIdx)}
-                className="block w-full p-0 border-0 bg-transparent cursor-pointer"
+            {images.map(({ src, alt, caption, ariaLabel, isVideo, type }, localIdx) => (
+              <figure
+                key={src}
+                className="m-0 flex-none w-[300px] h-full overflow-hidden border border-border-soft rounded-xl bg-card group flex flex-col"
               >
-                <Img
-                  src={src}
-                  width={600}
-                  height={400}
-                  loading="lazy"
-                  decoding="async"
-                  alt={alt}
-                  className="w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.06]"
-                  style={{ aspectRatio: '3/2' }}
-                />
-              </button>
-            )}
-            <figcaption className="font-mono text-[0.67rem] tracking-[0.12em] uppercase text-text-secondary px-3 py-[10px] border-t border-border-soft">
-              {caption}
-            </figcaption>
-          </figure>
-        ))}
-      </div>
+                {isVideo || type === 'video' ? (
+                  <video
+                    src={src}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full object-cover flex-1"
+                    style={{ aspectRatio: '3/2' }}
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    aria-label={ariaLabel}
+                    onClick={() => onOpen(galleryOffset + localIdx)}
+                    className="block w-full p-0 border-0 bg-transparent cursor-pointer flex-1"
+                  >
+                    <Img
+                      src={src}
+                      width={600}
+                      height={400}
+                      loading="lazy"
+                      decoding="async"
+                      alt={alt}
+                      className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.06]"
+                    />
+                  </button>
+                )}
+                <figcaption className="font-mono text-[0.67rem] tracking-[0.12em] uppercase text-text-secondary px-3 py-[10px] border-t border-border-soft flex-shrink-0">
+                  {caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
 
-      {/* Prev / Next navigation arrows */}
-      <button
-        type="button"
-        onClick={prev}
-        aria-label="Previous photo"
-        className="absolute left-2 top-[calc(50%-16px)] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card/90 backdrop-blur-md border border-border text-text-primary flex items-center justify-center hover:bg-purple hover:text-on-accent hover:border-purple shadow-lg transition-all duration-200"
-      >
-        <svg viewBox="0 0 16 16" fill="none" className="w-4.5 h-4.5"><path d="M10 4L6 8l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-      </button>
-      <button
-        type="button"
-        onClick={next}
-        aria-label="Next photo"
-        className="absolute right-2 top-[calc(50%-16px)] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card/90 backdrop-blur-md border border-border text-text-primary flex items-center justify-center hover:bg-purple hover:text-on-accent hover:border-purple shadow-lg transition-all duration-200"
-      >
-        <svg viewBox="0 0 16 16" fill="none" className="w-4.5 h-4.5"><path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-      </button>
+        {/*
+          Nav arrows: siblings of the overflow-hidden div, NOT children.
+          They can NEVER be clipped by it. z-index:20 puts them above the strip's
+          transform stacking context.
+        */}
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous photo"
+          style={{
+            position: 'absolute',
+            left: '8px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 20,
+          }}
+          className="w-10 h-10 rounded-full bg-card/90 backdrop-blur-sm border border-border text-text-primary flex items-center justify-center hover:bg-purple hover:text-on-accent hover:border-purple shadow-lg transition-all duration-200"
+        >
+          <svg viewBox="0 0 16 16" fill="none" width="18" height="18">
+            <path d="M10 4 L6 8 L10 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
 
-      {/* Dot indicators */}
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next photo"
+          style={{
+            position: 'absolute',
+            right: '8px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 20,
+          }}
+          className="w-10 h-10 rounded-full bg-card/90 backdrop-blur-sm border border-border text-text-primary flex items-center justify-center hover:bg-purple hover:text-on-accent hover:border-purple shadow-lg transition-all duration-200"
+        >
+          <svg viewBox="0 0 16 16" fill="none" width="18" height="18">
+            <path d="M6 4 L10 8 L6 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
+      </div>{/* end fixed-height wrapper */}
+
+      {/* Dot indicators — outside the fixed-height box so they flow normally */}
       <div className="flex justify-center gap-[6px] mt-4">
         {images.map((_, i) => (
           <button
@@ -174,6 +210,7 @@ function Gallery({ images, onOpen, galleryOffset }) {
     </div>
   );
 }
+
 
 
 /**
