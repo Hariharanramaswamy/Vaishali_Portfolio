@@ -8,7 +8,7 @@ const CELLS = [
       </svg>
     ),
     title: 'Brand Marketing',
-    body: 'I build brand presence through campaigns that carry a consistent story across every touchpoint. The work covers positioning, messaging and the creative that brings it to life.',
+    body: 'I help brands communicate clearly through campaigns, ideas, and consistent messaging across different platforms',
   },
   {
     wide: true,
@@ -18,7 +18,7 @@ const CELLS = [
       </svg>
     ),
     title: 'Marketing Communications',
-    body: 'I develop communication across digital, print, events and corporate channels. Copywriting, campaign messaging and event communication all sit inside this.',
+    body: 'I create marketing content for social media, websites, events, presentations, and internal communication',
   },
   {
     wide: false,
@@ -29,7 +29,7 @@ const CELLS = [
       </svg>
     ),
     title: 'Employer Branding',
-    body: 'I create internal campaigns that make employees feel part of the brand. ONE11 is the clearest example of that work.',
+    body: 'I work on campaigns that improve employee engagement and strengthen company culture, like the ONE11 anniversary campaign',
   },
   {
     wide: false,
@@ -41,7 +41,7 @@ const CELLS = [
       </svg>
     ),
     title: 'Community Marketing',
-    body: 'I grow creative communities through branding, communication and volunteer leadership. Four years at Madrasters taught me how communities actually hold together.',
+    body: 'I help grow creative communities by planning events, creating campaigns, and bringing people together.',
   },
   {
     wide: true,
@@ -52,7 +52,7 @@ const CELLS = [
       </svg>
     ),
     title: 'Event Marketing',
-    body: 'I plan and execute conferences, corporate events and community meetups end to end. Vendor coordination, logistics, collateral and on-ground execution are all part of it.',
+    body: 'From planning to execution, I coordinate events, manage vendors, create marketing materials, and ensure everything runs smoothly.',
   },
   {
     wide: true,
@@ -63,7 +63,7 @@ const CELLS = [
       </svg>
     ),
     title: 'Visual Design',
-    body: 'Design is where my career began and it still shapes how I communicate. It means I can take a concept from brief through to finished artwork.',
+    body: 'I create designs that support marketing, whether it\'s social media, presentations, websites, or campaign creatives.',
   },
   {
     wide: true,
@@ -74,7 +74,7 @@ const CELLS = [
       </svg>
     ),
     title: '3D Design',
-    body: 'I use 3D to give campaigns and product stories a physical presence. It adds depth to key visuals that flat design can\'t reach.',
+    body: 'I use 3D illustrations and animations to make products and marketing campaigns more engaging and visually appealing.',
   },
 ];
 
@@ -92,7 +92,7 @@ export default function WhatIDo() {
           <div>
             <h2 id="wid-h" className="max-w-[20ch]">Seven disciplines, one way of working.</h2>
             <p className="mt-[18px] max-w-[56ch] text-text-secondary">
-              Strategy, communication, creativity and execution — usually on the same project, often in the same week.
+              From planning campaigns to designing visuals, these are the areas I work across to build better brand experiences.
             </p>
           </div>
         </div>
