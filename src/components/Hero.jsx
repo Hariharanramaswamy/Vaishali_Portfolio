@@ -59,7 +59,7 @@ export default function Hero() {
               className="reveal text-[clamp(1.02rem,1.35vw,1.14rem)] text-text-secondary max-w-[60ch] mb-0"
               style={{ '--d': '340ms' }}
             >
-              I'm Vaishali R, a Brand Marketing and Marketing Communications professional with 3+ years of experience creating campaigns, executing events, building communities and designing meaningful brand experiences.
+              I'm Vaishali R, a Brand Marketing and Marketing Communications professional with 4+ years of experience creating campaigns, executing events, building communities and designing meaningful brand experiences.
             </p>
 
             <div
