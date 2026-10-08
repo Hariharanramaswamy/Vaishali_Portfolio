@@ -28,7 +28,7 @@ const CELLS = [
         <path d="M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
       </svg>
     ),
-    title: 'Employer Branding',
+    title: 'Employee Branding',
     body: 'I work on campaigns that improve employee engagement and strengthen company culture, like the ONE11 anniversary campaign',
   },
   {

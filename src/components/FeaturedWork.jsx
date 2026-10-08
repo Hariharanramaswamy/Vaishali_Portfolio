@@ -61,7 +61,7 @@ const CASE_STUDIES = [
     kicker: 'Internal Anniversary Campaign· M2P Fintech',
     banner: {
       src: 'assets/images/one11-banner.jpg',
-      alt: "ONE11 employer branding campaign merchandise for M2P's eleventh anniversary",
+      alt: "ONE11 employee branding campaign merchandise for M2P's eleventh anniversary",
     },
     challenge: [
       "M2P's 11th anniversary was an opportunity to celebrate the company's journey while reinforcing its <strong>One M2P </strong> culture through a company-wide internal engagement campaign",
@@ -88,7 +88,7 @@ const CASE_STUDIES = [
       { stat: '3 gifts', label: 'Personalised luggage tag, ONE11 bookmark and a donut for every employee' },
       { stat: '1 platform', label: 'Darwinbox used to collect employee photos and responses' },
     ],
-    chips: ['Employer Branding', 'Campaign Naming', 'Campaign Planning', 'Vendor Management', 'Cost Negotiation', 'Print Production', 'Internal Communication', 'Employee Engagement'],
+    chips: ['Employee Branding', 'Campaign Naming', 'Campaign Planning', 'Vendor Management', 'Cost Negotiation', 'Print Production', 'Internal Communication', 'Employee Engagement'],
     reflection: 'Seeing an idea evolve from a campaign name into a company-wide experience taught me how internal branding can strengthen culture through thoughtful engagement and meaningful participation.',
     galleryOffset: 10,
   },

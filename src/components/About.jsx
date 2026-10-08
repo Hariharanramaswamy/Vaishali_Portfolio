@@ -27,7 +27,7 @@ export default function About() {
               I started my career as a Visual Designer, where I learned how thoughtful design shapes the way people experience brands.
             </p>
             <p className="text-text-secondary">
-              As my career evolved, so did my responsibilities. Today, I work across Brand Marketing, Marketing Communications, Employer Branding, Event Marketing, Community Marketing and Creative Design.
+              As my career evolved, so did my responsibilities. Today, I work across Brand Marketing, Marketing Communications, Employee Branding, Event Marketing, Community Marketing and Creative Design.
             </p>
             <p className="text-text-secondary">
               I've contributed to large-scale fintech conferences, internal branding campaigns, marketing communication, campaign execution, social media strategy, copywriting, event management, vendor coordination and community leadership.
